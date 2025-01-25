@@ -1,7 +1,16 @@
 import { useState, useEffect } from "react";
 import { BookOpen } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom"; 
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Link, useNavigate } from "react-router-dom";
 import { getCurrentUser, getUserToken } from "../constant/HelperAuth";
+
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+} from "@/components/ui/dropdown-menu";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -9,7 +18,7 @@ export default function Home() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const currentUser = getCurrentUser(); 
+    const currentUser = getCurrentUser();
     setUser(currentUser);
     if (currentUser && getUserToken) {
       setIsLoggedIn(true);
@@ -23,7 +32,7 @@ export default function Home() {
     if (currentUser) {
       setIsLoggedIn(true);
     } else {
-      navigate("/login"); 
+      navigate("/login");
     }
   };
 
@@ -38,31 +47,30 @@ export default function Home() {
       <header className="border-b">
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-between h-16">
-            <Link to="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-2">
               <BookOpen className="h-6 w-6" />
               <span className="font-bold text-xl">MyBlog</span>
             </Link>
-            <div className="flex items-center space-x-4">
+            <div>
               {isLoggedIn ? (
-                <>
-                  <span className="font-semibold">Welcome User</span>
-                  <button
-                    onClick={handleLogout}
-                    className="bg-red-600 text-white px-4 py-2 rounded-full"
-                  >
-                    Logout
-                  </button>
-                </>
+                <DropdownMenu>
+                  <DropdownMenuTrigger>
+                    <Avatar className="cursor-pointer">
+                      <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-48">
+                    <DropdownMenuItem onClick={handleLogout}>
+                      Logout
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               ) : (
-                <>
-                  <span className="font-semibold">Please Login</span>
-                  <button
-                    onClick={handleLogin}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-full cursor-pointer"
-                  >
-                    Login
-                  </button>
-                </>
+                <Button onClick={handleLogin}>Login</Button>
               )}
             </div>
           </nav>
@@ -78,9 +86,7 @@ export default function Home() {
               <p className="text-gray-600 mb-4">
                 This is a short preview of blog post {post}...
               </p>
-              <button className="bg-gray-300 text-black px-4 py-2 rounded-md">
-                Read More
-              </button>
+              <Button variant="outline">Read More</Button>
             </div>
           ))}
         </div>
