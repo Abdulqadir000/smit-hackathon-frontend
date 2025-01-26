@@ -10,10 +10,10 @@ import Dashboards from "./admin/adminComponent/Dashboards";
 import RequestManager from "./admin/adminComponent/RequestManager";
 import LoanAppointment from "./admin/adminComponent/LoanAppointment";
 import LandingPage from "./LandingPage";
-import WeddingLoans from "./users/userComponents/weddingLoans";
 import ConstructionLoans from "./users/userComponents/ConstructionLoans";
 import BussinessLoans from "./users/userComponents/BussinessLoans";
 import EducationalLoans from "./users/userComponents/EducationalLoans";
+import WeddingLoans from "./users/userComponents/WeddingLoans";
 
 function App() {
   // let currentUser = getCurrentUser();
