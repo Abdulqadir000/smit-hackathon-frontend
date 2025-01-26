@@ -23,7 +23,7 @@ function Login() {
         sessionStorage.setItem("jwtToken", response.data.token);
         sessionStorage.setItem("user", JSON.stringify(response.data.user));
         toast.success("Login successful");
-        navigate("/");
+        navigate("/dashboard");
       } else {
         toast.error("Login failed. Please try again.");
       }

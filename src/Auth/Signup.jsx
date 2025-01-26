@@ -23,7 +23,7 @@ function Signup() {
       if (response.data.token && response.data.user) {
         sessionStorage.setItem("jwtToken", response.data.token);
         sessionStorage.setItem("user", JSON.stringify(response.data.user));
-        navigate("/");
+        navigate("/dashboard");
       } else {
         console.error("Login failed. Please try again.");
       }
