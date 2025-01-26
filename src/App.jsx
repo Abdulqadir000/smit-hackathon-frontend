@@ -1,13 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-// import Login from "./Auth/Login";
-// import Signup from "./Auth/Signup";
-// import Home from "./Home/Home";
-// import SideBarMenu from "./Home/Sidebar";
-// import Dashboard from "./component/Dashboard";
 
-// import Dashboard from "./user/userComponent/Dashboard";
-// import PersonalLoans from "./user/userComponent/PersonalLoans";
 import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
 import User from "./users/User";
